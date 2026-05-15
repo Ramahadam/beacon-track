@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { SlaBadge } from '@/components/sla-badge';
 import {
   Table,
   TableBody,
@@ -132,6 +133,7 @@ export default async function ServiceRequestsListPage({
                     <TableHead>Priority</TableHead>
                     <TableHead>Requester</TableHead>
                     <TableHead>Owner</TableHead>
+                    <TableHead>SLA</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -156,6 +158,9 @@ export default async function ServiceRequestsListPage({
                       </TableCell>
                       <TableCell className="text-muted-foreground">
                         {t.owner ?? 'Unassigned'}
+                      </TableCell>
+                      <TableCell>
+                        <SlaBadge deadline={t.deadline} priority={t.priority} />
                       </TableCell>
                     </TableRow>
                   ))}
