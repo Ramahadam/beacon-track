@@ -62,7 +62,20 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
-## 5. Commit Frequently
+## 5. Write a Feature Guide After Every Feature
+
+**Every non-trivial feature gets a guide in `docs/features/<feature-name>.md`.**
+
+The guide must cover:
+- **What it does** — user-facing description and flow
+- **How it works** — technical overview (data flow, key packages, auth/RBAC considerations)
+- **Tradeoffs** — decisions made and why (use a table: decision / chosen / alternative / rationale)
+- **Known limitations** — honest list of what's missing or fragile
+- **What I would do next** — short-term, medium-term, and long-term improvements
+
+Write the guide in the same commit as the feature. Do not skip it for "small" features — if it was worth building, it's worth documenting.
+
+## 6. Commit Frequently
 
 **Don't accumulate changes. Commit as you go.**
 
