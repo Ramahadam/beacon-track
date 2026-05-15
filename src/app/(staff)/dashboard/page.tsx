@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/table';
 import { PRIORITY_LABELS } from '@/lib/constants';
 import { getDashboardStats } from './data';
+import { NewTicketModal } from '@/components/new-ticket-modal';
 
 export default async function DashboardPage() {
   const session = await requireStaff();
@@ -31,9 +32,12 @@ export default async function DashboardPage() {
     <>
       <SiteHeader title="Dashboard" />
       <div className="flex flex-1 flex-col gap-4 p-4 md:gap-6 md:p-6">
-        <p className="text-muted-foreground text-sm">
-          Welcome back, <span className="font-medium text-foreground">{first}</span>
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-muted-foreground text-sm">
+            Welcome back, <span className="font-medium text-foreground">{first}</span>
+          </p>
+          <NewTicketModal isStaff={true} />
+        </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard

@@ -13,8 +13,17 @@ import {
 } from '@/components/ui/card';
 import { IncidentCreateForm } from '@/components/incident-create-form';
 
-export default async function NewIncidentPage() {
+export default async function NewIncidentPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    priority: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   const engineers = await prisma.user.findMany({
     where: { userrole: { in: ['analyst', 'admin'] }, isActive: true },
@@ -48,6 +57,7 @@ export default async function NewIncidentPage() {
               userId={session.user.id}
               engineers={options}
               isStaff={isStaff(session.user.role)}
+              prefill={prefill}
             />
           </CardContent>
         </Card>

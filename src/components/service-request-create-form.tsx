@@ -27,14 +27,18 @@ import { Textarea } from '@/components/ui/textarea';
 
 type EngineerOption = { id: string; label: string; email: string };
 
+type Prefill = { description?: string; priority?: number };
+
 export function ServiceRequestCreateForm({
   userId,
   engineers,
   isStaff,
+  prefill,
 }: {
   userId: string;
   engineers: EngineerOption[];
   isStaff: boolean;
+  prefill?: Prefill;
 }) {
   const [uploadedUrl, setUploadedUrl] = React.useState<string>('');
   const [uploading, setUploading] = React.useState(false);
@@ -48,8 +52,8 @@ export function ServiceRequestCreateForm({
     resolver: zodResolver(serviceRequestCreateSchema),
     defaultValues: {
       summary: '',
-      description: '',
-      priority: 3,
+      description: prefill?.description ?? '',
+      priority: prefill?.priority ?? 3,
       impact: undefined,
       owner: '',
       noteValue: '',

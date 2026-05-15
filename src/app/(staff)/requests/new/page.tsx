@@ -13,8 +13,17 @@ import {
 } from '@/components/ui/card';
 import { ServiceRequestCreateForm } from '@/components/service-request-create-form';
 
-export default async function NewServiceRequestPage() {
+export default async function NewServiceRequestPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    priority: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   const engineers = await prisma.user.findMany({
     where: { userrole: { in: ['analyst', 'admin'] }, isActive: true },
@@ -48,6 +57,7 @@ export default async function NewServiceRequestPage() {
               userId={session.user.id}
               engineers={options}
               isStaff={isStaff(session.user.role)}
+              prefill={prefill}
             />
           </CardContent>
         </Card>

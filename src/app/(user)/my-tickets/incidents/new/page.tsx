@@ -11,8 +11,17 @@ import {
 } from '@/components/ui/card';
 import { IncidentCreateForm } from '@/components/incident-create-form';
 
-export default async function NewMyIncidentPage() {
+export default async function NewMyIncidentPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    priority: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   return (
     <>
@@ -30,7 +39,7 @@ export default async function NewMyIncidentPage() {
             <CardTitle>Log an incident</CardTitle>
           </CardHeader>
           <CardContent>
-            <IncidentCreateForm userId={session.user.id} engineers={[]} isStaff={false} />
+            <IncidentCreateForm userId={session.user.id} engineers={[]} isStaff={false} prefill={prefill} />
           </CardContent>
         </Card>
       </div>

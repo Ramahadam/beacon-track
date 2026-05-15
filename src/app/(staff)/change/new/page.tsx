@@ -13,8 +13,17 @@ import {
 } from '@/components/ui/card';
 import { ChangeRequestCreateForm } from '@/components/change-request-create-form';
 
-export default async function NewChangeRequestPage() {
+export default async function NewChangeRequestPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    classification: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   const engineers = await prisma.user.findMany({
     where: { userrole: { in: ['analyst', 'admin'] }, isActive: true },
@@ -48,6 +57,7 @@ export default async function NewChangeRequestPage() {
               userId={session.user.id}
               engineers={options}
               isStaff={isStaff(session.user.role)}
+              prefill={prefill}
             />
           </CardContent>
         </Card>

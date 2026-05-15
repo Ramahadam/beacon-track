@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { requireUser } from '@/lib/auth-helpers';
+import { NewTicketModal } from '@/components/new-ticket-modal';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -67,12 +68,6 @@ export default async function MyTicketsPage({
     email: session.user.email,
   };
 
-  const newHref: Record<Tab, string> = {
-    incidents: '/my-tickets/incidents/new',
-    requests: '/my-tickets/requests/new',
-    change: '/my-tickets/change/new',
-  };
-
   const tabs: { value: Tab; label: string }[] = [
     { value: 'incidents', label: 'Incidents' },
     { value: 'requests', label: 'Service Requests' },
@@ -99,7 +94,7 @@ export default async function MyTicketsPage({
             ))}
           </div>
           <div className="ml-auto">
-            <Button render={<Link href={newHref[tab]}>New ticket</Link>} />
+            <NewTicketModal isStaff={false} />
           </div>
         </div>
 

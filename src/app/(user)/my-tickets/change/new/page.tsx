@@ -11,8 +11,17 @@ import {
 } from '@/components/ui/card';
 import { ChangeRequestCreateForm } from '@/components/change-request-create-form';
 
-export default async function NewMyChangeRequestPage() {
+export default async function NewMyChangeRequestPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    classification: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   return (
     <>
@@ -34,6 +43,7 @@ export default async function NewMyChangeRequestPage() {
               userId={session.user.id}
               engineers={[]}
               isStaff={false}
+              prefill={prefill}
             />
           </CardContent>
         </Card>

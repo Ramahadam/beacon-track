@@ -11,8 +11,17 @@ import {
 } from '@/components/ui/card';
 import { ServiceRequestCreateForm } from '@/components/service-request-create-form';
 
-export default async function NewMyServiceRequestPage() {
+export default async function NewMyServiceRequestPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | undefined>>;
+}) {
   const session = await requireUser();
+  const sp = await searchParams;
+  const prefill = {
+    description: sp.description,
+    priority: sp.priority ? Number(sp.priority) : undefined,
+  };
 
   return (
     <>
@@ -34,6 +43,7 @@ export default async function NewMyServiceRequestPage() {
               userId={session.user.id}
               engineers={[]}
               isStaff={false}
+              prefill={prefill}
             />
           </CardContent>
         </Card>
