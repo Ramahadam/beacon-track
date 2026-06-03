@@ -9,7 +9,7 @@ import {
   UsersIcon,
 } from 'lucide-react';
 
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireAdmin } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { FilterChip } from '@/components/ticket-primitives';
 import { Badge } from '@/components/ui/badge';

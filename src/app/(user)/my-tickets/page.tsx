@@ -9,7 +9,7 @@ import {
   PlusIcon,
 } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import {
   ClassificationBadge,

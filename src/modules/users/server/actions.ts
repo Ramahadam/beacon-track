@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
-import { isAdmin } from '@/lib/permissions';
+import { isAdmin } from '@/shared/auth/permissions';
 import {
   userCreateSchema,
   userUpdateSchema,

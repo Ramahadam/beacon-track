@@ -48,6 +48,12 @@ The case presentation cleanup slice moves ticket presentation helpers out of `sr
 - Customer-facing my-ticket tab presentation lives in `src/modules/cases/presentation/my-tickets-presentation.ts`.
 - SLA status helpers live in `src/modules/cases/domain/sla.ts`.
 
+The shared auth cleanup slice moves cross-cutting auth helpers out of `src/lib`:
+
+- Route auth guards live in `src/shared/auth/auth-helpers.ts`.
+- Role predicates and permission helpers live in `src/shared/auth/permissions.ts`.
+- Session-to-navigation display mapping lives in `src/shared/auth/session-display.ts`.
+
 ## How It Works
 
 Next.js route files remain the composition layer. They handle route params, auth context, and rendering. Business modules own domain behavior and reusable domain UI.
@@ -74,7 +80,7 @@ Server Actions are allowed outside `src/app` when exported from files marked wit
 
 - Service request and change request queries still live in staff route folders.
 - Generic UI, app shell layout, shared case primitives, and reporting controls still live in the flat `src/components` directory.
-- `src/lib` intentionally keeps `prisma.ts` and shadcn `utils.ts`; it still contains auth guards, dashboard presentation, upload client, session display, and related tests that need later cleanup.
+- `src/lib` intentionally keeps `prisma.ts` and shadcn `utils.ts`; it still contains dashboard presentation, upload client, and runtime env config that need later cleanup.
 - Import boundary rules are documented but not yet enforced by ESLint.
 - `src/shared` is only scaffolded; generic UI has not moved yet.
 
@@ -186,14 +192,17 @@ src/
     layout/
     providers/
     auth/
+      auth-helpers.ts
+      permissions.ts
       roles.ts
+      session-display.ts
     db/
     config/
       pagination.ts
     utils/
 
   lib/
-    # Temporary compatibility re-exports only; no new code should be added here.
+    # Accepted framework-convention files only; no new feature/domain code.
 ```
 
 ### Current File Migration Map
@@ -210,7 +219,7 @@ src/
 | User create/edit/delete/profile forms | `src/modules/users/components/*` | User/profile domain UI. |
 | `login-form` | `src/modules/auth/components/*` | Authentication UI. |
 | `excel-export-button` and Excel export helper | `src/modules/reporting/*` | Export helper completed; button move remains later component cleanup. |
-| `auth-helpers`, `permissions` | `src/shared/auth/*` | Cross-module auth guards and role predicates. |
+| `auth-helpers`, `permissions`, `session-display` | `src/shared/auth/*` | Completed: cross-module auth guards, role predicates, and nav session display mapping. |
 | `prisma` | Keep in `src/lib/prisma.ts` | Accepted Next.js/Prisma convention for this project. |
 | `env` | `src/shared/config/env.ts` | Runtime configuration. |
 | `utils` | Keep in `src/lib/utils.ts` | Accepted shadcn convention because `components.json` aliases `utils` there. |
@@ -230,7 +239,7 @@ src/
 3. Move user queries and user/profile components into `src/modules/users`.
 4. Move shared case UI into `src/modules/cases`.
 5. Move generic UI/app shell/providers from `src/components` into `src/shared`.
-6. Move remaining non-convention infrastructure from `src/lib` into `src/shared` or owning modules; keep `src/lib/prisma.ts` and `src/lib/utils.ts`.
+6. Move remaining non-convention dashboard, file upload, and env infrastructure from `src/lib` into `src/shared` or owning modules; keep `src/lib/prisma.ts` and `src/lib/utils.ts`.
 7. Add lint/import rules that make `src/lib` compatibility-only and prevent `src/modules` from importing `src/app`.
 8. Audit and remove unreferenced badge/pill files after confirming no dynamic imports or external references.
 
@@ -242,7 +251,7 @@ Short term:
 - Migrate change request queries into `src/modules/change-requests/server`.
 - Move user queries into `src/modules/users/server`.
 - Move dashboard presentation into `src/modules/dashboard/presentation`.
-- Move remaining non-convention auth/session/upload infrastructure out of `src/lib` while keeping `src/lib/prisma.ts` and `src/lib/utils.ts`.
+- Move remaining non-convention dashboard/upload/env infrastructure out of `src/lib` while keeping `src/lib/prisma.ts` and `src/lib/utils.ts`.
 
 Medium term:
 

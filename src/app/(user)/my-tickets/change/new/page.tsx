@@ -1,4 +1,4 @@
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { getCreateTicketBackHref } from '@/modules/cases/presentation/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';

@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
-import { isStaff, isAdmin } from '@/lib/permissions';
+import { isStaff, isAdmin } from '@/shared/auth/permissions';
 
 export async function requireUser() {
   const session = await auth();

@@ -26,7 +26,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import type { Role } from '@/shared/auth/roles';
-import { isAdmin, isStaff } from '@/lib/permissions';
+import { isAdmin, isStaff } from '@/shared/auth/permissions';
 
 const STAFF_NAV: NavItem[] = [
   { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboardIcon },

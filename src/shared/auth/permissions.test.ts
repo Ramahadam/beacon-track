@@ -8,7 +8,7 @@ import {
   canUserCreate,
   canUserUpload,
   canUserAddNote,
-} from '../permissions';
+} from './permissions';
 
 describe('isStaff', () => {
   it('returns true for analyst', () => expect(isStaff('analyst')).toBe(true));

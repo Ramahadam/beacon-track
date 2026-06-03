@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireAdmin } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import {

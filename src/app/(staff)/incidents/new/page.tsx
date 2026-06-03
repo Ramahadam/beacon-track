@@ -1,6 +1,6 @@
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 import { getCreateTicketBackHref } from '@/modules/cases/presentation/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';

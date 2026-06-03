@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import {
   QueueFilterPanel,

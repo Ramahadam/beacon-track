@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth  } from '@/auth';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 
 export default async function RootPage() {
   const session = await auth();

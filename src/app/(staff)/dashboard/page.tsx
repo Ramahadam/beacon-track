@@ -8,7 +8,7 @@ import {
   UsersIcon,
 } from 'lucide-react';
 
-import { requireStaff } from '@/lib/auth-helpers';
+import { requireStaff } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { PriorityBadge, SlaBadge, StatusPill } from '@/components/ticket-primitives';
 import {

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
-import { requireUser } from '@/lib/auth-helpers';
-import { sessionToNavUser } from '@/lib/session-display';
+import { requireUser } from '@/shared/auth/auth-helpers';
+import { sessionToNavUser } from '@/shared/auth/session-display';
 import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 

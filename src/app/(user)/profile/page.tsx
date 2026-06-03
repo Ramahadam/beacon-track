@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { MailIcon, PhoneIcon, ShieldIcon } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';

@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 import {
   withOwnershipFilter,
   type OwnershipContext,
