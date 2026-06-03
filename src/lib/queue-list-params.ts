@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from './constants';
+import { PAGE_SIZE } from '@/shared/config/pagination';
 
 export type QueueState = 'open' | 'closed' | 'all';
 export type QueueOwnerFilter = 'all' | 'me' | 'unassigned';

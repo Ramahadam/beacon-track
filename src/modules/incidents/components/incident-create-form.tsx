@@ -11,10 +11,8 @@ import {
   incidentCreateSchema,
   type IncidentCreateInput,
 } from '@/modules/incidents/validation/incident-create';
-import {
-  IMPACT_OPTIONS,
-  PRIORITY_SELECT_OPTIONS,
-} from '@/lib/constants';
+import { IMPACT_OPTIONS } from '@/modules/cases/domain/impact';
+import { PRIORITY_SELECT_OPTIONS } from '@/modules/cases/domain/priority';
 import { uploadFile } from '@/lib/upload-client';
 import { Button } from '@/components/ui/button';
 import {

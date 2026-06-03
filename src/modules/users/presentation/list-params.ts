@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from '@/lib/constants';
+import { PAGE_SIZE } from '@/shared/config/pagination';
 import {
   USER_ROLE_VALUES,
   type UserRoleValue,

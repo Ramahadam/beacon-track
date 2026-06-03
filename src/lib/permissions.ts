@@ -1,4 +1,4 @@
-import type { Role } from './constants';
+import type { Role } from '@/shared/auth/roles';
 
 export function isStaff(role: Role | undefined) {
   return role === 'analyst' || role === 'admin';

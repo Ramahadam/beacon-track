@@ -1,4 +1,4 @@
-import type { TicketNote } from './ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 
 export type TicketActivityEvent = {
   id: string;

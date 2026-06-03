@@ -10,7 +10,7 @@ import {
   buildNoteEntry,
   mergeNotes,
   type TicketNote,
-} from '@/lib/ticket-helpers';
+} from '@/modules/cases/server/ticket-helpers';
 import {
   changeRequestCreateSchema,
   changeRequestUpdateSchema,

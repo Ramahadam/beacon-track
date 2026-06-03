@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/card';
 import { ChangeRequestEditForm } from '@/modules/change-requests/components/change-request-edit-form';
 import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getChangeRequest } from '@/app/(staff)/change/data';
 
 export default async function MyChangeRequestDetailPage({

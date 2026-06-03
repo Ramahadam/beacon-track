@@ -1,4 +1,4 @@
-import { PRIORITY } from './constants';
+import { PRIORITY } from '@/modules/cases/domain/priority';
 
 // Windows must stay in sync with calculateDeadline() in helpers.ts
 const WINDOW_MS: Record<number, number> = {

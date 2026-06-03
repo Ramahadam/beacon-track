@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { PAGE_SIZE } from '@/lib/constants';
+import { PAGE_SIZE } from '@/shared/config/pagination';
 import { parseUsersListParams } from './list-params';
 
 describe('users list params', () => {

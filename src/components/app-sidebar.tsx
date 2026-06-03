@@ -25,7 +25,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import type { Role } from '@/lib/constants';
+import type { Role } from '@/shared/auth/roles';
 import { isAdmin, isStaff } from '@/lib/permissions';
 
 const STAFF_NAV: NavItem[] = [

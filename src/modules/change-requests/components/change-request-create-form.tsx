@@ -11,10 +11,8 @@ import {
   changeRequestCreateSchema,
   type ChangeRequestCreateInput,
 } from '@/modules/change-requests/validation/change-request';
-import {
-  CATEGORY_OPTIONS,
-  CLASSIFICATION_SELECT_OPTIONS,
-} from '@/lib/constants';
+import { CLASSIFICATION_SELECT_OPTIONS } from '@/modules/cases/domain/classification';
+import { CATEGORY_OPTIONS } from '@/modules/change-requests/domain/constants';
 import { uploadFile } from '@/lib/upload-client';
 import { Button } from '@/components/ui/button';
 import {

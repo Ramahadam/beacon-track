@@ -5,11 +5,9 @@ import { toast } from 'sonner';
 
 import { updateServiceRequestAction } from '@/modules/service-requests/server/actions';
 import { uploadFile } from '@/lib/upload-client';
-import {
-  IMPACT_OPTIONS,
-  PRIORITY_SELECT_OPTIONS,
-  TICKET_STATUS_OPTIONS,
-} from '@/lib/constants';
+import { IMPACT_OPTIONS } from '@/modules/cases/domain/impact';
+import { PRIORITY_SELECT_OPTIONS } from '@/modules/cases/domain/priority';
+import { TICKET_STATUS_OPTIONS } from '@/modules/cases/domain/status';
 import { Button } from '@/components/ui/button';
 import {
   Field,

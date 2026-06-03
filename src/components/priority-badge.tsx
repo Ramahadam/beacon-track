@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { PRIORITY } from '@/lib/constants';
+import { PRIORITY } from '@/modules/cases/domain/priority';
 
 interface PriorityBadgeProps {
   priority: number;

@@ -2,7 +2,7 @@
 
 import { FileSpreadsheetIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { exportToExcel } from '@/lib/helpers';
+import { exportToExcel } from '@/modules/reporting/export/excel';
 
 interface ExcelExportButtonProps {
   data: Record<string, unknown>[];

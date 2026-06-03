@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { PRIORITY_LABELS } from '@/lib/constants';
+import { PRIORITY_LABELS } from '@/modules/cases/domain/priority';
 
 type ClassifyResult = {
   type: 'incident' | 'service_request' | 'change_request';

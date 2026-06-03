@@ -3,7 +3,7 @@ import { isStaff } from '@/lib/permissions';
 import {
   withOwnershipFilter,
   type OwnershipContext,
-} from '@/lib/ticket-helpers';
+} from '@/modules/cases/server/ticket-helpers';
 import { parseQueueListParams } from '@/lib/queue-list-params';
 import { ChangeStatus, type Prisma } from '@/generated/prisma/client';
 

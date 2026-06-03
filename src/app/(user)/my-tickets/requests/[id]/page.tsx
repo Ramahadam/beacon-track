@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/card';
 import { ServiceRequestEditForm } from '@/modules/service-requests/components/service-request-edit-form';
 import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getServiceRequest } from '@/app/(staff)/requests/data';
 
 export default async function MyServiceRequestDetailPage({

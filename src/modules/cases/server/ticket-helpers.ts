@@ -1,7 +1,8 @@
-import type { Role } from '@/lib/constants';
-import type { TicketNote } from '@/lib/helpers';
+import type { Role } from '@/shared/auth/roles';
+import type { TicketNote } from '@/modules/cases/domain/notes';
 
-export { mergeNotes, calculateDeadline, type TicketNote } from '@/lib/helpers';
+export { calculateDeadline } from '@/modules/cases/domain/deadlines';
+export { mergeNotes, type TicketNote } from '@/modules/cases/domain/notes';
 
 export function buildNoteEntry(value: string, author: string): TicketNote {
   return {

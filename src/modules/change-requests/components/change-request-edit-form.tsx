@@ -5,11 +5,11 @@ import { toast } from 'sonner';
 
 import { updateChangeRequestAction } from '@/modules/change-requests/server/actions';
 import { uploadFile } from '@/lib/upload-client';
+import { CLASSIFICATION_SELECT_OPTIONS } from '@/modules/cases/domain/classification';
 import {
   CATEGORY_OPTIONS,
-  CLASSIFICATION_SELECT_OPTIONS,
   CR_STATUS_OPTIONS,
-} from '@/lib/constants';
+} from '@/modules/change-requests/domain/constants';
 import { Button } from '@/components/ui/button';
 import {
   Field,

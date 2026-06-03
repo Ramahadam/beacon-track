@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { TICKET_STATUS } from '@/lib/constants';
+import { TICKET_STATUS } from '@/modules/cases/domain/status';
 
 export const impactValues = ['one', 'two', 'many'] as const;
 export const statusValues = Object.values(TICKET_STATUS) as [string, ...string[]];

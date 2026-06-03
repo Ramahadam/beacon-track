@@ -1,4 +1,5 @@
-import { CLASSIFICATION_LABELS, PRIORITY } from './constants';
+import { CLASSIFICATION_LABELS } from '@/modules/cases/domain/classification';
+import { PRIORITY } from '@/modules/cases/domain/priority';
 
 export type Presentation = {
   label: string;

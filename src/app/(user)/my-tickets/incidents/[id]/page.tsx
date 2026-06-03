@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/card';
 import { IncidentEditForm } from '@/modules/incidents/components/incident-edit-form';
 import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getIncident } from '@/modules/incidents/server/queries';
 
 export default async function MyIncidentDetailPage({

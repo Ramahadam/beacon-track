@@ -29,7 +29,7 @@ import {
 import { ChangeRequestEditForm } from '@/modules/change-requests/components/change-request-edit-form';
 import { DeleteChangeRequestButton } from '@/modules/change-requests/components/delete-change-request-button';
 import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getChangeRequest } from '../data';
 
 export default async function ChangeRequestDetailPage({

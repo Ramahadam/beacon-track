@@ -29,7 +29,7 @@ import {
 import { ServiceRequestEditForm } from '@/modules/service-requests/components/service-request-edit-form';
 import { DeleteServiceRequestButton } from '@/modules/service-requests/components/delete-service-request-button';
 import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getServiceRequest } from '../data';
 
 export default async function ServiceRequestDetailPage({

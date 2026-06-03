@@ -6,7 +6,7 @@ import { ArrowLeftIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { TicketActivityEvent } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { cn } from '@/lib/utils';
 
 export function DetailPageFrame({

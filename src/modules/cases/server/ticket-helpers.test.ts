@@ -4,7 +4,7 @@ import {
   withOwnershipFilter,
   parseTicketListParams,
   mergeNotes,
-} from '../ticket-helpers';
+} from './ticket-helpers';
 
 // ─── buildNoteEntry ──────────────────────────────────────────────────────────
 

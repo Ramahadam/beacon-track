@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import type { Role } from '@/lib/constants';
+import type { Role } from '@/shared/auth/roles';
 import { isStaff, isAdmin } from '@/lib/permissions';
 
 export function useSessionUser() {

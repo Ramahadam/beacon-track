@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { calculateDeadline } from '../helpers';
-import { PRIORITY } from '../constants';
+import { calculateDeadline } from './deadlines';
+import { PRIORITY } from './priority';
 
 describe('calculateDeadline', () => {
   const NOW = new Date('2025-06-01T10:00:00.000Z');
