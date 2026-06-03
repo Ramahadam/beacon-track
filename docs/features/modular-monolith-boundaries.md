@@ -18,6 +18,14 @@ The second cleanup slice applies the same component ownership rule to feature UI
 - User, profile, and delete-user UI live in `src/modules/users/components`.
 - Login UI lives in `src/modules/auth/components`.
 
+The validation cleanup slice removes the root `src/lib/validation` bucket:
+
+- Login validation lives in `src/modules/auth/validation`.
+- User validation and user-list params live in `src/modules/users`.
+- Change request validation lives in `src/modules/change-requests/validation`.
+- Incident and service request create validation live in their owning modules.
+- Shared ticket field and update validation lives in `src/modules/cases/validation`.
+
 ## How It Works
 
 Next.js route files remain the composition layer. They handle route params, auth context, and rendering. Business modules own domain behavior and reusable domain UI.
@@ -44,6 +52,7 @@ Server Actions are allowed outside `src/app` when exported from files marked wit
 
 - Service request and change request queries still live in staff route folders.
 - Generic UI, app shell layout, shared case primitives, and reporting controls still live in the flat `src/components` directory.
+- `src/lib` still contains mixed helpers, constants, presentation files, infrastructure adapters, and tests.
 - Import boundary rules are documented but not yet enforced by ESLint.
 - `src/shared` is only scaffolded; generic UI has not moved yet.
 
@@ -54,7 +63,7 @@ The next problem to solve is not only `src/app`; it is the root-level `src/lib` 
 ### Current Friction
 
 - `src/components` still mixes generic UI kit files, app shell layout, shared ticket/case UI, and reporting/export controls.
-- `src/lib` mixes database setup, auth guards, permission rules, domain constants, validation schemas, presentation builders, ticket helpers, upload clients, and generic utilities.
+- `src/lib` still mixes database setup, auth guards, permission rules, domain constants, presentation builders, ticket helpers, upload clients, and generic utilities.
 - Some route files still import Prisma directly for small supporting queries such as engineer lists, profile data, staff layout counts, and dashboard aggregation.
 - Service request and change request queries still live under staff route folders while user-facing routes import them.
 - `src/components/priority-badge.tsx`, `src/components/sla-badge.tsx`, and `src/components/status-pill.tsx` appear unreferenced after the app moved to `ticket-primitives`; audit before deleting.
@@ -88,19 +97,24 @@ src/
         form-data.ts
         ticket-helpers.ts
       validation/
-        tickets.ts
+        ticket-fields.ts
+        ticket-update.ts
 
     incidents/
       components/
       server/
         actions.ts
         queries.ts
+      validation/
+        incident-create.ts
 
     service-requests/
       components/
       server/
         actions.ts
         queries.ts
+      validation/
+        service-request-create.ts
 
     change-requests/
       components/
@@ -164,7 +178,7 @@ src/
 | `env` | `src/shared/config/env.ts` | Runtime configuration. |
 | `utils` | `src/shared/utils/*` | Keep generic helpers only. |
 | `constants` | Split by domain | Ticket constants to `cases`, change constants to `change-requests`, role constants to auth/users. |
-| `validation/*` | Owning module `validation/*` | Auth, users, cases, and change requests should own schemas. |
+| `validation/*` | Owning module `validation/*` | Completed for auth, users, incidents, service requests, change requests, and shared case ticket validation. |
 | `queue-list-params`, `ticket-activity`, `ticket-presentation`, `create-ticket-routes`, `sla` | `src/modules/cases/*` | Case/ticket behavior and presentation. |
 | `dashboard-presentation` | `src/modules/dashboard/presentation/*` | Dashboard-specific view model logic. |
 | `my-tickets-presentation` | `src/modules/cases/presentation/my-tickets.ts` | Customer-facing case list presentation. |

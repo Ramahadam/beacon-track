@@ -2,7 +2,7 @@ import { PAGE_SIZE } from '@/lib/constants';
 import {
   USER_ROLE_VALUES,
   type UserRoleValue,
-} from '@/lib/validation/users';
+} from '@/modules/users/validation/users';
 
 const SORTABLE = new Set(['email', 'userrole', 'createdAt']);
 

@@ -10,7 +10,7 @@ import { createServiceRequestAction } from '@/modules/service-requests/server/ac
 import {
   serviceRequestCreateSchema,
   type ServiceRequestCreateInput,
-} from '@/lib/validation/tickets';
+} from '@/modules/service-requests/validation/service-request-create';
 import {
   IMPACT_OPTIONS,
   PRIORITY_SELECT_OPTIONS,

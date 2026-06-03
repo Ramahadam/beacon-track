@@ -14,7 +14,7 @@ import {
 import {
   changeRequestCreateSchema,
   changeRequestUpdateSchema,
-} from '@/lib/validation/change-requests';
+} from '@/modules/change-requests/validation/change-request';
 import type { Prisma, ChangeCategory, ChangeStatus } from '@/generated/prisma/client';
 
 function formDataToObject(formData: FormData): Record<string, unknown> {

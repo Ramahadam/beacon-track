@@ -13,10 +13,8 @@ import {
   type TicketNote,
 } from '@/modules/cases/server/ticket-helpers';
 import { ticketFormDataToObject } from '@/modules/cases/server/form-data';
-import {
-  incidentCreateSchema,
-  ticketUpdateSchema,
-} from '@/lib/validation/tickets';
+import { ticketUpdateSchema } from '@/modules/cases/validation/ticket-update';
+import { incidentCreateSchema } from '@/modules/incidents/validation/incident-create';
 import type { Prisma, TicketStatus } from '@/generated/prisma/client';
 
 export async function createIncidentAction(formData: FormData) {

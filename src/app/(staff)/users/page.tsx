@@ -30,7 +30,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { USER_ROLE_VALUES } from '@/lib/validation/users';
+import { USER_ROLE_VALUES } from '@/modules/users/validation/users';
 import { getUsersList } from './data';
 
 type SP = Record<string, string | string[] | undefined>;

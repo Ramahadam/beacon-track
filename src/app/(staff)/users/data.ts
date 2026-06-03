@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { parseUsersListParams } from '@/lib/users-list-params';
+import { parseUsersListParams } from '@/modules/users/presentation/list-params';
 import type { Prisma } from '@/generated/prisma/client';
 
 const SELECT_SAFE = {

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { toast } from 'sonner';
 
 import { updateUserAction } from '@/modules/users/server/actions';
-import { USER_ROLE_VALUES } from '@/lib/validation/users';
+import { USER_ROLE_VALUES } from '@/modules/users/validation/users';
 import { Button } from '@/components/ui/button';
 import {
   Field,

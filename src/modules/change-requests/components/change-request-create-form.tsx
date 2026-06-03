@@ -10,7 +10,7 @@ import { createChangeRequestAction } from '@/modules/change-requests/server/acti
 import {
   changeRequestCreateSchema,
   type ChangeRequestCreateInput,
-} from '@/lib/validation/change-requests';
+} from '@/modules/change-requests/validation/change-request';
 import {
   CATEGORY_OPTIONS,
   CLASSIFICATION_SELECT_OPTIONS,

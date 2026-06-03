@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { changeRequestCreateSchema, changeRequestUpdateSchema } from '../change-requests';
+import { changeRequestCreateSchema, changeRequestUpdateSchema } from '../change-request';
 
 const validCreate = {
   summary: 'Upgrade database to v15',

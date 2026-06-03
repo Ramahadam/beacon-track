@@ -12,10 +12,8 @@ import {
   mergeNotes,
   type TicketNote,
 } from '@/lib/ticket-helpers';
-import {
-  serviceRequestCreateSchema,
-  ticketUpdateSchema,
-} from '@/lib/validation/tickets';
+import { ticketUpdateSchema } from '@/modules/cases/validation/ticket-update';
+import { serviceRequestCreateSchema } from '@/modules/service-requests/validation/service-request-create';
 import type { Prisma, TicketStatus } from '@/generated/prisma/client';
 
 function formDataToObject(formData: FormData): Record<string, unknown> {

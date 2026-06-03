@@ -5,7 +5,7 @@ import { ZodError } from 'zod';
 
 import { authConfig } from '@/auth.config';
 import { prisma } from '@/lib/prisma';
-import { loginSchema } from '@/lib/validation/auth';
+import { loginSchema } from '@/modules/auth/validation/login';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,

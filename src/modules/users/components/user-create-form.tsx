@@ -10,7 +10,7 @@ import {
   userCreateSchema,
   USER_ROLE_VALUES,
   type UserCreateInput,
-} from '@/lib/validation/users';
+} from '@/modules/users/validation/users';
 import { Button } from '@/components/ui/button';
 import {
   Field,

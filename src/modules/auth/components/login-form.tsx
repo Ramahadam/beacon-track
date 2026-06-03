@@ -8,7 +8,7 @@ import { signIn } from 'next-auth/react';
 import { toast } from 'sonner';
 
 import { cn } from '@/lib/utils';
-import { loginSchema, type LoginFormValues } from '@/lib/validation/auth';
+import { loginSchema, type LoginFormValues } from '@/modules/auth/validation/login';
 import { Button } from '@/components/ui/button';
 import {
   Field,

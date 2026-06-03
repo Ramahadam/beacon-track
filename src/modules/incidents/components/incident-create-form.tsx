@@ -10,7 +10,7 @@ import { createIncidentAction } from '@/modules/incidents/server/actions';
 import {
   incidentCreateSchema,
   type IncidentCreateInput,
-} from '@/lib/validation/tickets';
+} from '@/modules/incidents/validation/incident-create';
 import {
   IMPACT_OPTIONS,
   PRIORITY_SELECT_OPTIONS,

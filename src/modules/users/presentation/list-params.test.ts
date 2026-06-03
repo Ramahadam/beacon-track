@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { PAGE_SIZE } from '@/lib/constants';
-import { parseUsersListParams } from './users-list-params';
+import { parseUsersListParams } from './list-params';
 
 describe('users list params', () => {
   it('defaults to the first page and newest users', () => {

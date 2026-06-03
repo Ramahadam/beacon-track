@@ -10,7 +10,7 @@ import { isAdmin } from '@/lib/permissions';
 import {
   userCreateSchema,
   userUpdateSchema,
-} from '@/lib/validation/users';
+} from '@/modules/users/validation/users';
 import type { Prisma, UserRole } from '@/generated/prisma/client';
 
 function formDataToObject(formData: FormData): Record<string, unknown> {
