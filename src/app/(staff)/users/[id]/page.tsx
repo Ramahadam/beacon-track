@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { ArrowLeftIcon } from 'lucide-react';
 
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireAdmin } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { DetailFact } from '@/components/detail-page-primitives';
 import { Badge } from '@/components/ui/badge';
@@ -14,8 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { UserEditForm } from '@/components/user-edit-form';
-import { DeleteUserButton } from '@/components/delete-user-button';
+import { UserEditForm } from '@/modules/users/components/user-edit-form';
+import { DeleteUserButton } from '@/modules/users/components/delete-user-button';
 import { getUser } from '../data';
 
 function roleLabel(role: string): string {

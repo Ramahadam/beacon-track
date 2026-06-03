@@ -1,8 +1,8 @@
-import { requireUser } from '@/lib/auth-helpers';
-import { getCreateTicketBackHref } from '@/lib/create-ticket-routes';
+import { requireUser } from '@/shared/auth/auth-helpers';
+import { getCreateTicketBackHref } from '@/modules/cases/presentation/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';
-import { ServiceRequestCreateForm } from '@/components/service-request-create-form';
+import { ServiceRequestCreateForm } from '@/modules/service-requests/components/service-request-create-form';
 
 export default async function NewMyServiceRequestPage() {
   const session = await requireUser();

@@ -88,7 +88,7 @@ There are three user roles:
 ### React Hook Form + Zod
 **What:** React Hook Form manages form state. Zod validates the data.  
 **Why:** Forms have a lot of moving parts — field registration, validation, error messages, submission state. RHF handles all of that without re-rendering the whole form on every keystroke. Zod gives you a schema (a set of rules) that validates data both in the browser and on the server, using the same definition.  
-**Key files:** `src/lib/validation/` contains all schemas.
+**Key files:** `src/modules/*/validation/` contains module-owned schemas.
 
 ### Vercel Blob
 **What:** File storage. When a user attaches a file to a ticket, it gets stored in Vercel's blob storage.  
@@ -596,7 +596,7 @@ Then run: `npx prisma migrate dev --name add_incident_comments`
 ### Step 2 — Add a Zod schema
 
 ```ts
-// src/lib/validation/tickets.ts
+// src/modules/incidents/validation/comment-create.ts
 export const commentCreateSchema = z.object({
   body: z.string().trim().min(1, 'Comment cannot be empty'),
 });

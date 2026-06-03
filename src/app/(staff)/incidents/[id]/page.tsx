@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { DownloadIcon } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 import { SiteHeader } from '@/components/site-header';
 import {
   PriorityBadge,
@@ -26,11 +26,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { IncidentEditForm } from '@/components/incident-edit-form';
-import { DeleteIncidentButton } from '@/components/delete-incident-button';
-import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
-import { getIncident } from '../data';
+import { IncidentEditForm } from '@/modules/incidents/components/incident-edit-form';
+import { DeleteIncidentButton } from '@/modules/incidents/components/delete-incident-button';
+import { buildTicketActivity } from '@/modules/cases/presentation/ticket-activity';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
+import { getIncident } from '@/modules/incidents/server/queries';
 
 export default async function IncidentDetailPage({
   params,

@@ -13,7 +13,7 @@ import {
 import { FilterChip } from '@/components/ticket-primitives';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { QueueOwnerFilter, QueueSort, QueueState } from '@/lib/queue-list-params';
+import type { QueueOwnerFilter, QueueSort, QueueState } from '@/modules/cases/presentation/queue-list-params';
 
 type HrefFor = (patch: Record<string, string | null>) => string;
 

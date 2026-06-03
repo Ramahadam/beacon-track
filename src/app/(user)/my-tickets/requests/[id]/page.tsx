@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { DownloadIcon } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import {
   PriorityBadge,
@@ -24,9 +24,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ServiceRequestEditForm } from '@/components/service-request-edit-form';
-import { buildTicketActivity } from '@/lib/ticket-activity';
-import type { TicketNote } from '@/lib/ticket-helpers';
+import { ServiceRequestEditForm } from '@/modules/service-requests/components/service-request-edit-form';
+import { buildTicketActivity } from '@/modules/cases/presentation/ticket-activity';
+import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getServiceRequest } from '@/app/(staff)/requests/data';
 
 export default async function MyServiceRequestDetailPage({

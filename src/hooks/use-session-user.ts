@@ -1,8 +1,8 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import type { Role } from '@/lib/constants';
-import { isStaff, isAdmin } from '@/lib/permissions';
+import type { Role } from '@/shared/auth/roles';
+import { isStaff, isAdmin } from '@/shared/auth/permissions';
 
 export function useSessionUser() {
   const { data, status } = useSession();

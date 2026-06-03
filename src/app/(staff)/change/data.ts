@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 import {
   withOwnershipFilter,
   type OwnershipContext,
-} from '@/lib/ticket-helpers';
-import { parseQueueListParams } from '@/lib/queue-list-params';
+} from '@/modules/cases/server/ticket-helpers';
+import { parseQueueListParams } from '@/modules/cases/presentation/queue-list-params';
 import { ChangeStatus, type Prisma } from '@/generated/prisma/client';
 
 const CLOSED_STATUSES: ChangeStatus[] = [ChangeStatus.implemented, ChangeStatus.cancelled];

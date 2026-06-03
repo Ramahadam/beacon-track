@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { MailIcon, PhoneIcon, ShieldIcon } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { SiteHeader } from '@/components/site-header';
 import { Badge } from '@/components/ui/badge';
@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ProfileForm } from '@/components/profile-form';
+import { ProfileForm } from '@/modules/users/components/profile-form';
 
 export default async function ProfilePage() {
   const session = await requireUser();

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireAdmin } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { UserCreateForm } from '@/components/user-create-form';
+import { UserCreateForm } from '@/modules/users/components/user-create-form';
 
 export default async function NewUserPage() {
   await requireAdmin();

@@ -1,8 +1,8 @@
 import type { CSSProperties } from 'react';
 
-import { requireStaff } from '@/lib/auth-helpers';
+import { requireStaff } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
-import { sessionToNavUser } from '@/lib/session-display';
+import { sessionToNavUser } from '@/shared/auth/session-display';
 import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { ChangeStatus, TicketStatus } from '@/generated/prisma/client';

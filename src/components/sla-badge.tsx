@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { getSlaStatus, getTimeLabel, type SlaStatus } from '@/lib/sla';
+import { getSlaStatus, getTimeLabel, type SlaStatus } from '@/modules/cases/domain/sla';
 import type React from 'react';
 
 interface SlaBadgeProps {

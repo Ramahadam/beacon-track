@@ -9,7 +9,7 @@ import {
   PlusIcon,
 } from 'lucide-react';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import {
   ClassificationBadge,
@@ -25,7 +25,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { PAGE_SIZE } from '@/lib/constants';
+import { PAGE_SIZE } from '@/shared/config/pagination';
 import {
   getMyTicketDetailHref,
   getMyTicketsTabConfig,
@@ -33,11 +33,11 @@ import {
   MY_TICKETS_TABS,
   normalizeMyTicketsTab,
   type MyTicketsTab,
-} from '@/lib/my-tickets-presentation';
-import { getIncidentsList } from '@/app/(staff)/incidents/data';
+} from '@/modules/cases/presentation/my-tickets-presentation';
+import { getIncidentsList } from '@/modules/incidents/server/queries';
 import { getServiceRequestsList } from '@/app/(staff)/requests/data';
 import { getChangeRequestsList } from '@/app/(staff)/change/data';
-import type { OwnershipContext } from '@/lib/ticket-helpers';
+import type { OwnershipContext } from '@/modules/cases/server/ticket-helpers';
 
 type SP = Record<string, string | string[] | undefined>;
 type IncidentTicket = Awaited<ReturnType<typeof getIncidentsList>>['data'][number];

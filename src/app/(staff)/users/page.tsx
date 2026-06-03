@@ -9,7 +9,7 @@ import {
   UsersIcon,
 } from 'lucide-react';
 
-import { requireAdmin } from '@/lib/auth-helpers';
+import { requireAdmin } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import { FilterChip } from '@/components/ticket-primitives';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +30,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { USER_ROLE_VALUES } from '@/lib/validation/users';
+import { USER_ROLE_VALUES } from '@/modules/users/validation/users';
 import { getUsersList } from './data';
 
 type SP = Record<string, string | string[] | undefined>;

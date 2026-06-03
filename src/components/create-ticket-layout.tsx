@@ -15,7 +15,7 @@ import {
   getCreateTicketNav,
   type TicketCreateKind,
   type TicketCreateScope,
-} from '@/lib/create-ticket-routes';
+} from '@/modules/cases/presentation/create-ticket-routes';
 import { Button } from '@/components/ui/button';
 import {
   Card,

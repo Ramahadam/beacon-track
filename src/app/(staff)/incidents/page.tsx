@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
 
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { SiteHeader } from '@/components/site-header';
 import {
   QueueFilterPanel,
@@ -22,8 +22,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { parseQueueListParams } from '@/lib/queue-list-params';
-import { getIncidentsList } from './data';
+import { parseQueueListParams } from '@/modules/cases/presentation/queue-list-params';
+import { getIncidentsList } from '@/modules/incidents/server/queries';
 
 type SP = Record<string, string | string[] | undefined>;
 

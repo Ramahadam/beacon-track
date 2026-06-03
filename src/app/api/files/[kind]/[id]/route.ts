@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
+import { isStaff } from '@/shared/auth/permissions';
 
 export const runtime = 'nodejs';
 

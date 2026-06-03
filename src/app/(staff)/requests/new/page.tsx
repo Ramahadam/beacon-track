@@ -1,10 +1,10 @@
-import { requireUser } from '@/lib/auth-helpers';
+import { requireUser } from '@/shared/auth/auth-helpers';
 import { prisma } from '@/lib/prisma';
-import { isStaff } from '@/lib/permissions';
-import { getCreateTicketBackHref } from '@/lib/create-ticket-routes';
+import { isStaff } from '@/shared/auth/permissions';
+import { getCreateTicketBackHref } from '@/modules/cases/presentation/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';
-import { ServiceRequestCreateForm } from '@/components/service-request-create-form';
+import { ServiceRequestCreateForm } from '@/modules/service-requests/components/service-request-create-form';
 
 export default async function NewServiceRequestPage() {
   const session = await requireUser();
