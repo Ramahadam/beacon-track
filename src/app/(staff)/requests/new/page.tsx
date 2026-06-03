@@ -1,7 +1,7 @@
 import { requireUser } from '@/lib/auth-helpers';
 import { prisma } from '@/lib/prisma';
 import { isStaff } from '@/lib/permissions';
-import { getCreateTicketBackHref } from '@/lib/create-ticket-routes';
+import { getCreateTicketBackHref } from '@/modules/cases/presentation/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';
 import { ServiceRequestCreateForm } from '@/modules/service-requests/components/service-request-create-form';

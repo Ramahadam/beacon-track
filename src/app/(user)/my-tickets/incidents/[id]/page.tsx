@@ -25,7 +25,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { IncidentEditForm } from '@/modules/incidents/components/incident-edit-form';
-import { buildTicketActivity } from '@/lib/ticket-activity';
+import { buildTicketActivity } from '@/modules/cases/presentation/ticket-activity';
 import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getIncident } from '@/modules/incidents/server/queries';
 

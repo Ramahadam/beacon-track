@@ -25,7 +25,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { ServiceRequestEditForm } from '@/modules/service-requests/components/service-request-edit-form';
-import { buildTicketActivity } from '@/lib/ticket-activity';
+import { buildTicketActivity } from '@/modules/cases/presentation/ticket-activity';
 import type { TicketNote } from '@/modules/cases/server/ticket-helpers';
 import { getServiceRequest } from '@/app/(staff)/requests/data';
 

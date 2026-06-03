@@ -33,7 +33,7 @@ import {
   MY_TICKETS_TABS,
   normalizeMyTicketsTab,
   type MyTicketsTab,
-} from '@/lib/my-tickets-presentation';
+} from '@/modules/cases/presentation/my-tickets-presentation';
 import { getIncidentsList } from '@/modules/incidents/server/queries';
 import { getServiceRequestsList } from '@/app/(staff)/requests/data';
 import { getChangeRequestsList } from '@/app/(staff)/change/data';

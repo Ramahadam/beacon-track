@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { parseQueueListParams } from '@/lib/queue-list-params';
+import { parseQueueListParams } from '@/modules/cases/presentation/queue-list-params';
 import { getServiceRequestsList } from './data';
 
 type SP = Record<string, string | string[] | undefined>;

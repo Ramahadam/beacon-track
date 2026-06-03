@@ -4,7 +4,7 @@ import {
   withOwnershipFilter,
   type OwnershipContext,
 } from '@/modules/cases/server/ticket-helpers';
-import { parseQueueListParams } from '@/lib/queue-list-params';
+import { parseQueueListParams } from '@/modules/cases/presentation/queue-list-params';
 import { ChangeStatus, type Prisma } from '@/generated/prisma/client';
 
 const CLOSED_STATUSES: ChangeStatus[] = [ChangeStatus.implemented, ChangeStatus.cancelled];

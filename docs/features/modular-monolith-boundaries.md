@@ -40,6 +40,14 @@ The helper/constants cleanup slice removes the mixed `src/lib/helpers.ts`, `src/
 - `prisma.ts` is the shared Prisma client adapter used across route and module code.
 - `utils.ts` provides the shadcn `cn` helper and matches the `components.json` alias.
 
+The case presentation cleanup slice moves ticket presentation helpers out of `src/lib`:
+
+- Create-ticket route helpers live in `src/modules/cases/presentation/create-ticket-routes.ts`.
+- Queue list params live in `src/modules/cases/presentation/queue-list-params.ts`.
+- Ticket activity and display presentation live in `src/modules/cases/presentation`.
+- Customer-facing my-ticket tab presentation lives in `src/modules/cases/presentation/my-tickets-presentation.ts`.
+- SLA status helpers live in `src/modules/cases/domain/sla.ts`.
+
 ## How It Works
 
 Next.js route files remain the composition layer. They handle route params, auth context, and rendering. Business modules own domain behavior and reusable domain UI.
@@ -66,7 +74,7 @@ Server Actions are allowed outside `src/app` when exported from files marked wit
 
 - Service request and change request queries still live in staff route folders.
 - Generic UI, app shell layout, shared case primitives, and reporting controls still live in the flat `src/components` directory.
-- `src/lib` intentionally keeps `prisma.ts` and shadcn `utils.ts`; it still contains auth guards, presentation helpers, upload client, and related tests that need later cleanup.
+- `src/lib` intentionally keeps `prisma.ts` and shadcn `utils.ts`; it still contains auth guards, dashboard presentation, upload client, session display, and related tests that need later cleanup.
 - Import boundary rules are documented but not yet enforced by ESLint.
 - `src/shared` is only scaffolded; generic UI has not moved yet.
 
@@ -77,7 +85,7 @@ The next problem to solve is not only `src/app`; it is the root-level `src/lib` 
 ### Current Friction
 
 - `src/components` still mixes generic UI kit files, app shell layout, shared ticket/case UI, and reporting/export controls.
-- `src/lib` still mixes database setup, auth guards, permission rules, presentation builders, upload clients, and generic utilities.
+- `src/lib` still mixes database setup, auth guards, permission rules, dashboard presentation, upload client, session display, and generic utilities.
 - Some route files still import Prisma directly for small supporting queries such as engineer lists, profile data, staff layout counts, and dashboard aggregation.
 - Service request and change request queries still live under staff route folders while user-facing routes import them.
 - `src/components/priority-badge.tsx`, `src/components/sla-badge.tsx`, and `src/components/status-pill.tsx` appear unreferenced after the app moved to `ticket-primitives`; audit before deleting.
@@ -104,6 +112,7 @@ src/
         impact.ts
         notes.ts
         priority.ts
+        sla.ts
         status.ts
       components/
         badges.tsx
@@ -111,9 +120,11 @@ src/
         detail-page.tsx
         queue-list.tsx
       presentation/
-        activity.ts
-        my-tickets.ts
-        ticket.ts
+        create-ticket-routes.ts
+        my-tickets-presentation.ts
+        queue-list-params.ts
+        ticket-activity.ts
+        ticket-presentation.ts
       server/
         form-data.ts
         ticket-helpers.ts
@@ -205,9 +216,9 @@ src/
 | `utils` | Keep in `src/lib/utils.ts` | Accepted shadcn convention because `components.json` aliases `utils` there. |
 | `constants` | Split by domain | Completed: cases, change requests, shared roles, and shared pagination own their constants. |
 | `validation/*` | Owning module `validation/*` | Completed for auth, users, incidents, service requests, change requests, and shared case ticket validation. |
-| `queue-list-params`, `ticket-activity`, `ticket-presentation`, `create-ticket-routes`, `sla` | `src/modules/cases/*` | Case/ticket behavior and presentation. |
+| `queue-list-params`, `ticket-activity`, `ticket-presentation`, `create-ticket-routes`, `sla` | `src/modules/cases/*` | Completed: case/ticket behavior and presentation now live in `cases`. |
 | `dashboard-presentation` | `src/modules/dashboard/presentation/*` | Dashboard-specific view model logic. |
-| `my-tickets-presentation` | `src/modules/cases/presentation/my-tickets.ts` | Customer-facing case list presentation. |
+| `my-tickets-presentation` | `src/modules/cases/presentation/my-tickets-presentation.ts` | Completed: customer-facing case list presentation. |
 | `users-list-params` | `src/modules/users/presentation/list-params.ts` | User list presentation/query params. |
 | `upload-client` | `src/modules/files/client/upload-client.ts` | File upload capability. |
 | `helpers` | Split by domain | Completed for used helpers: ticket deadline/notes to cases; export to reporting. Unused legacy helper functions were removed. |
@@ -217,9 +228,9 @@ src/
 1. Move service request queries and components into `src/modules/service-requests`.
 2. Move change request queries and components into `src/modules/change-requests`.
 3. Move user queries and user/profile components into `src/modules/users`.
-4. Move shared case UI and case presentation helpers into `src/modules/cases`.
+4. Move shared case UI into `src/modules/cases`.
 5. Move generic UI/app shell/providers from `src/components` into `src/shared`.
-6. Move remaining non-convention infrastructure from `src/lib` into `src/shared`; keep `src/lib/prisma.ts` and `src/lib/utils.ts`.
+6. Move remaining non-convention infrastructure from `src/lib` into `src/shared` or owning modules; keep `src/lib/prisma.ts` and `src/lib/utils.ts`.
 7. Add lint/import rules that make `src/lib` compatibility-only and prevent `src/modules` from importing `src/app`.
 8. Audit and remove unreferenced badge/pill files after confirming no dynamic imports or external references.
 
@@ -230,13 +241,14 @@ Short term:
 - Migrate service request queries into `src/modules/service-requests/server`.
 - Migrate change request queries into `src/modules/change-requests/server`.
 - Move user queries into `src/modules/users/server`.
+- Move dashboard presentation into `src/modules/dashboard/presentation`.
 - Move remaining non-convention auth/session/upload infrastructure out of `src/lib` while keeping `src/lib/prisma.ts` and `src/lib/utils.ts`.
 
 Medium term:
 
 - Move generic layout components into `src/shared/layout`.
 - Move generic reusable UI wrappers into `src/shared/ui` only when they are truly domain-agnostic.
-- Move shared ticket/case primitives and presentation files into `src/modules/cases`.
+- Move shared ticket/case primitives into `src/modules/cases`.
 
 Long term:
 

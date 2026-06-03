@@ -8,7 +8,7 @@ import {
   getPriorityPresentation,
   getSlaPresentation,
   getStatusPresentation,
-} from "@/lib/ticket-presentation"
+} from "@/modules/cases/presentation/ticket-presentation"
 import { cn } from "@/lib/utils"
 
 function Dot({ className }: { className?: string }) {
