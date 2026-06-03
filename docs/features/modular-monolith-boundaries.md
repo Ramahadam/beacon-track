@@ -40,17 +40,155 @@ Server Actions are allowed outside `src/app` when exported from files marked wit
 - Import boundary rules are documented but not yet enforced by ESLint.
 - `src/shared` is only scaffolded; generic UI has not moved yet.
 
+## Complete Source Organization Review
+
+The next problem to solve is not only `src/app`; it is the root-level `src/lib` and `src/components` buckets. They currently mix unrelated responsibilities, which makes future enterprise features harder to place consistently.
+
+### Current Friction
+
+- `src/components` mixes generic UI kit files, app shell layout, shared ticket/case UI, feature-specific forms, delete buttons, auth/profile forms, and reporting/export controls.
+- `src/lib` mixes database setup, auth guards, permission rules, domain constants, validation schemas, presentation builders, ticket helpers, upload clients, and generic utilities.
+- Some route files still import Prisma directly for small supporting queries such as engineer lists, profile data, staff layout counts, and dashboard aggregation.
+- Service request and change request queries still live under staff route folders while user-facing routes import them.
+- `src/components/priority-badge.tsx`, `src/components/sla-badge.tsx`, and `src/components/status-pill.tsx` appear unreferenced after the app moved to `ticket-primitives`; audit before deleting.
+
+### Target Source Map
+
+Use this as the long-term folder target:
+
+```text
+src/
+  app/
+    # Next.js route files only: params, auth, composition, metadata, route handlers
+
+  modules/
+    auth/
+      components/
+      server/
+      validation/
+
+    cases/
+      components/
+        badges.tsx
+        create-ticket-layout.tsx
+        detail-page.tsx
+        queue-list.tsx
+      presentation/
+        activity.ts
+        my-tickets.ts
+        ticket.ts
+      server/
+        form-data.ts
+        ticket-helpers.ts
+      validation/
+        tickets.ts
+
+    incidents/
+      components/
+      server/
+        actions.ts
+        queries.ts
+
+    service-requests/
+      components/
+      server/
+        actions.ts
+        queries.ts
+
+    change-requests/
+      components/
+      server/
+        actions.ts
+        queries.ts
+      validation/
+
+    users/
+      components/
+      presentation/
+      server/
+        actions.ts
+        profile-actions.ts
+        queries.ts
+      validation/
+
+    dashboard/
+      components/
+      presentation/
+      server/
+        queries.ts
+
+    files/
+      client/
+      server/
+
+    reporting/
+      components/
+      export/
+
+  shared/
+    ui/
+    layout/
+    providers/
+    auth/
+    db/
+    config/
+    utils/
+
+  lib/
+    # Temporary compatibility re-exports only; no new code should be added here.
+```
+
+### Current File Migration Map
+
+| Current location | Target location | Notes |
+| --- | --- | --- |
+| `src/components/ui/*` | `src/shared/ui/*` | Generic design-system primitives. Move with compatibility re-exports or an import codemod. |
+| `src/components/providers/*` | `src/shared/providers/*` | Cross-app providers. |
+| `app-sidebar`, `nav-main`, `nav-user`, `site-header`, `theme-toggle` | `src/shared/layout/*` | App shell, not domain code. |
+| `ticket-primitives`, `detail-page-primitives`, `queue-list-primitives`, `create-ticket-layout`, `new-ticket-modal` | `src/modules/cases/components/*` | Shared ticket/case UI. |
+| `operations-primitives` | `src/modules/dashboard/components/*` | Dashboard-specific UI. |
+| Service request forms/delete button | `src/modules/service-requests/components/*` | Pair with service request queries. |
+| Change request forms/delete button | `src/modules/change-requests/components/*` | Pair with change request queries. |
+| User create/edit/delete/profile forms | `src/modules/users/components/*` | User/profile domain UI. |
+| `login-form` | `src/modules/auth/components/*` | Authentication UI. |
+| `excel-export-button` and Excel export helper | `src/modules/reporting/*` | Reporting/export capability. |
+| `auth-helpers`, `permissions` | `src/shared/auth/*` | Cross-module auth guards and role predicates. |
+| `prisma` | `src/shared/db/prisma.ts` | Database adapter. |
+| `env` | `src/shared/config/env.ts` | Runtime configuration. |
+| `utils` | `src/shared/utils/*` | Keep generic helpers only. |
+| `constants` | Split by domain | Ticket constants to `cases`, change constants to `change-requests`, role constants to auth/users. |
+| `validation/*` | Owning module `validation/*` | Auth, users, cases, and change requests should own schemas. |
+| `queue-list-params`, `ticket-activity`, `ticket-presentation`, `create-ticket-routes`, `sla` | `src/modules/cases/*` | Case/ticket behavior and presentation. |
+| `dashboard-presentation` | `src/modules/dashboard/presentation/*` | Dashboard-specific view model logic. |
+| `my-tickets-presentation` | `src/modules/cases/presentation/my-tickets.ts` | Customer-facing case list presentation. |
+| `users-list-params` | `src/modules/users/presentation/list-params.ts` | User list presentation/query params. |
+| `upload-client` | `src/modules/files/client/upload-client.ts` | File upload capability. |
+| `helpers` | Split by domain | Ticket deadline/notes to cases; export to reporting; file name helpers to files. |
+
+### Recommended Migration Order
+
+1. Move service request queries and components into `src/modules/service-requests`.
+2. Move change request queries and components into `src/modules/change-requests`.
+3. Move user queries and user/profile components into `src/modules/users`.
+4. Move shared case UI and case presentation helpers into `src/modules/cases`.
+5. Split `src/lib/helpers.ts` and `src/lib/constants.ts` by domain.
+6. Move generic UI/app shell/providers from `src/components` into `src/shared`.
+7. Add lint/import rules that make `src/lib` compatibility-only and prevent `src/modules` from importing `src/app`.
+8. Audit and remove unreferenced badge/pill files after confirming no dynamic imports or external references.
+
 ## What I Would Do Next
 
 Short term:
 
 - Migrate service request queries and components into `src/modules/service-requests`.
 - Migrate change request queries and components into `src/modules/change-requests`.
+- Move user queries and user/profile components into `src/modules/users`.
 
 Medium term:
 
 - Move generic layout components into `src/shared/layout`.
 - Move generic reusable UI wrappers into `src/shared/ui` only when they are truly domain-agnostic.
+- Move shared ticket/case primitives and presentation files into `src/modules/cases`.
 
 Long term:
 
