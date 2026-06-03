@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { deleteServiceRequestAction } from '@/app/(staff)/requests/actions';
+import { deleteServiceRequestAction } from '@/modules/service-requests/server/actions';
 import { Button } from '@/components/ui/button';
 
 export function DeleteServiceRequestButton({ requestId }: { requestId: number }) {

@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { createServiceRequestAction } from '@/app/(staff)/requests/actions';
+import { createServiceRequestAction } from '@/modules/service-requests/server/actions';
 import {
   serviceRequestCreateSchema,
   type ServiceRequestCreateInput,

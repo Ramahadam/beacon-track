@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { deleteIncidentAction } from '@/app/(staff)/incidents/actions';
+import { deleteIncidentAction } from '@/modules/incidents/server/actions';
 import { Button } from '@/components/ui/button';
 
 export function DeleteIncidentButton({ incidentId }: { incidentId: number }) {

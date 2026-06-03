@@ -24,10 +24,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { IncidentEditForm } from '@/components/incident-edit-form';
+import { IncidentEditForm } from '@/modules/incidents/components/incident-edit-form';
 import { buildTicketActivity } from '@/lib/ticket-activity';
 import type { TicketNote } from '@/lib/ticket-helpers';
-import { getIncident } from '@/app/(staff)/incidents/data';
+import { getIncident } from '@/modules/incidents/server/queries';
 
 export default async function MyIncidentDetailPage({
   params,

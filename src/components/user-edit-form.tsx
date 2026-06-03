@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { updateUserAction } from '@/app/(staff)/users/actions';
+import { updateUserAction } from '@/modules/users/server/actions';
 import { USER_ROLE_VALUES } from '@/lib/validation/users';
 import { Button } from '@/components/ui/button';
 import {

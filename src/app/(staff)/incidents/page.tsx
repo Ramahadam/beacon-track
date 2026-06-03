@@ -23,7 +23,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { parseQueueListParams } from '@/lib/queue-list-params';
-import { getIncidentsList } from './data';
+import { getIncidentsList } from '@/modules/incidents/server/queries';
 
 type SP = Record<string, string | string[] | undefined>;
 

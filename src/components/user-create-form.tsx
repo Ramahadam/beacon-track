@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { createUserAction } from '@/app/(staff)/users/actions';
+import { createUserAction } from '@/modules/users/server/actions';
 import {
   userCreateSchema,
   USER_ROLE_VALUES,

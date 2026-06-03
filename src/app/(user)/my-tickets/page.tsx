@@ -34,7 +34,7 @@ import {
   normalizeMyTicketsTab,
   type MyTicketsTab,
 } from '@/lib/my-tickets-presentation';
-import { getIncidentsList } from '@/app/(staff)/incidents/data';
+import { getIncidentsList } from '@/modules/incidents/server/queries';
 import { getServiceRequestsList } from '@/app/(staff)/requests/data';
 import { getChangeRequestsList } from '@/app/(staff)/change/data';
 import type { OwnershipContext } from '@/lib/ticket-helpers';

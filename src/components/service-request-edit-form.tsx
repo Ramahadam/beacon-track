@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { updateServiceRequestAction } from '@/app/(staff)/requests/actions';
+import { updateServiceRequestAction } from '@/modules/service-requests/server/actions';
 import { uploadFile } from '@/lib/upload-client';
 import {
   IMPACT_OPTIONS,

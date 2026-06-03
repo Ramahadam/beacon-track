@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { createIncidentAction } from '@/app/(staff)/incidents/actions';
+import { createIncidentAction } from '@/modules/incidents/server/actions';
 import {
   incidentCreateSchema,
   type IncidentCreateInput,

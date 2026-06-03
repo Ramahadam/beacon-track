@@ -26,11 +26,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { IncidentEditForm } from '@/components/incident-edit-form';
-import { DeleteIncidentButton } from '@/components/delete-incident-button';
+import { IncidentEditForm } from '@/modules/incidents/components/incident-edit-form';
+import { DeleteIncidentButton } from '@/modules/incidents/components/delete-incident-button';
 import { buildTicketActivity } from '@/lib/ticket-activity';
 import type { TicketNote } from '@/lib/ticket-helpers';
-import { getIncident } from '../data';
+import { getIncident } from '@/modules/incidents/server/queries';
 
 export default async function IncidentDetailPage({
   params,

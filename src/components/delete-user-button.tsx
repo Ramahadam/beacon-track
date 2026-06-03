@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { deleteUserAction } from '@/app/(staff)/users/actions';
+import { deleteUserAction } from '@/modules/users/server/actions';
 import { Button } from '@/components/ui/button';
 
 export function DeleteUserButton({ userId }: { userId: string }) {

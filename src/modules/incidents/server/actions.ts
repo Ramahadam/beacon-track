@@ -11,28 +11,19 @@ import {
   calculateDeadline,
   mergeNotes,
   type TicketNote,
-} from '@/lib/ticket-helpers';
+} from '@/modules/cases/server/ticket-helpers';
+import { ticketFormDataToObject } from '@/modules/cases/server/form-data';
 import {
   incidentCreateSchema,
   ticketUpdateSchema,
 } from '@/lib/validation/tickets';
 import type { Prisma, TicketStatus } from '@/generated/prisma/client';
 
-function formDataToObject(formData: FormData): Record<string, unknown> {
-  const obj: Record<string, unknown> = {};
-  for (const [key, value] of formData.entries()) {
-    if (typeof value !== 'string') continue;
-    if (key === 'priority') obj[key] = Number(value);
-    else obj[key] = value;
-  }
-  return obj;
-}
-
 export async function createIncidentAction(formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error('Unauthorized');
 
-  const parsed = incidentCreateSchema.parse(formDataToObject(formData));
+  const parsed = incidentCreateSchema.parse(ticketFormDataToObject(formData));
 
   const deadline = calculateDeadline(parsed.priority);
   const initialNote = parsed.noteValue
@@ -63,7 +54,7 @@ export async function updateIncidentAction(id: number, formData: FormData) {
   const session = await auth();
   if (!session?.user) throw new Error('Unauthorized');
 
-  const parsed = ticketUpdateSchema.parse(formDataToObject(formData));
+  const parsed = ticketUpdateSchema.parse(ticketFormDataToObject(formData));
 
   const existing = await prisma.incident.findUnique({
     where: { id },

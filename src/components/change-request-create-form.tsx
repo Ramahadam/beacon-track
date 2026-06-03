@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { createChangeRequestAction } from '@/app/(staff)/change/actions';
+import { createChangeRequestAction } from '@/modules/change-requests/server/actions';
 import {
   changeRequestCreateSchema,
   type ChangeRequestCreateInput,

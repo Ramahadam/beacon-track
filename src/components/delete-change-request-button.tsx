@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { deleteChangeRequestAction } from '@/app/(staff)/change/actions';
+import { deleteChangeRequestAction } from '@/modules/change-requests/server/actions';
 import { Button } from '@/components/ui/button';
 
 export function DeleteChangeRequestButton({ requestId }: { requestId: number }) {

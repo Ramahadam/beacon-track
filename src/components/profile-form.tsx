@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import { updateProfileAction } from '@/app/(user)/profile/actions';
+import { updateProfileAction } from '@/modules/users/server/profile-actions';
 import { Button } from '@/components/ui/button';
 import {
   Field,
