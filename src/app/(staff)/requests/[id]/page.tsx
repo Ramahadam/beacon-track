@@ -26,8 +26,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ServiceRequestEditForm } from '@/components/service-request-edit-form';
-import { DeleteServiceRequestButton } from '@/components/delete-service-request-button';
+import { ServiceRequestEditForm } from '@/modules/service-requests/components/service-request-edit-form';
+import { DeleteServiceRequestButton } from '@/modules/service-requests/components/delete-service-request-button';
 import { buildTicketActivity } from '@/lib/ticket-activity';
 import type { TicketNote } from '@/lib/ticket-helpers';
 import { getServiceRequest } from '../data';

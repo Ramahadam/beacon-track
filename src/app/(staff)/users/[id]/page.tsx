@@ -14,8 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { UserEditForm } from '@/components/user-edit-form';
-import { DeleteUserButton } from '@/components/delete-user-button';
+import { UserEditForm } from '@/modules/users/components/user-edit-form';
+import { DeleteUserButton } from '@/modules/users/components/delete-user-button';
 import { getUser } from '../data';
 
 function roleLabel(role: string): string {

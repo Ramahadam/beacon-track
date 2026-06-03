@@ -11,6 +11,13 @@ The first implemented slice proves the pattern with incidents:
 - Incident-specific form and delete components live in `src/modules/incidents/components`.
 - Shared ticket/case helpers start moving into `src/modules/cases`.
 
+The second cleanup slice applies the same component ownership rule to feature UI:
+
+- Service request forms and delete UI live in `src/modules/service-requests/components`.
+- Change request forms and delete UI live in `src/modules/change-requests/components`.
+- User, profile, and delete-user UI live in `src/modules/users/components`.
+- Login UI lives in `src/modules/auth/components`.
+
 ## How It Works
 
 Next.js route files remain the composition layer. They handle route params, auth context, and rendering. Business modules own domain behavior and reusable domain UI.
@@ -36,7 +43,7 @@ Server Actions are allowed outside `src/app` when exported from files marked wit
 ## Known Limitations
 
 - Service request and change request queries still live in staff route folders.
-- Service request and change request UI still live in the flat `src/components` directory.
+- Generic UI, app shell layout, shared case primitives, and reporting controls still live in the flat `src/components` directory.
 - Import boundary rules are documented but not yet enforced by ESLint.
 - `src/shared` is only scaffolded; generic UI has not moved yet.
 
@@ -46,7 +53,7 @@ The next problem to solve is not only `src/app`; it is the root-level `src/lib` 
 
 ### Current Friction
 
-- `src/components` mixes generic UI kit files, app shell layout, shared ticket/case UI, feature-specific forms, delete buttons, auth/profile forms, and reporting/export controls.
+- `src/components` still mixes generic UI kit files, app shell layout, shared ticket/case UI, and reporting/export controls.
 - `src/lib` mixes database setup, auth guards, permission rules, domain constants, validation schemas, presentation builders, ticket helpers, upload clients, and generic utilities.
 - Some route files still import Prisma directly for small supporting queries such as engineer lists, profile data, staff layout counts, and dashboard aggregation.
 - Service request and change request queries still live under staff route folders while user-facing routes import them.
@@ -180,9 +187,9 @@ src/
 
 Short term:
 
-- Migrate service request queries and components into `src/modules/service-requests`.
-- Migrate change request queries and components into `src/modules/change-requests`.
-- Move user queries and user/profile components into `src/modules/users`.
+- Migrate service request queries into `src/modules/service-requests/server`.
+- Migrate change request queries into `src/modules/change-requests/server`.
+- Move user queries into `src/modules/users/server`.
 
 Medium term:
 

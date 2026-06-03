@@ -24,7 +24,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ChangeRequestEditForm } from '@/components/change-request-edit-form';
+import { ChangeRequestEditForm } from '@/modules/change-requests/components/change-request-edit-form';
 import { buildTicketActivity } from '@/lib/ticket-activity';
 import type { TicketNote } from '@/lib/ticket-helpers';
 import { getChangeRequest } from '@/app/(staff)/change/data';

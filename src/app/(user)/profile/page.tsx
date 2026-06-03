@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ProfileForm } from '@/components/profile-form';
+import { ProfileForm } from '@/modules/users/components/profile-form';
 
 export default async function ProfilePage() {
   const session = await requireUser();

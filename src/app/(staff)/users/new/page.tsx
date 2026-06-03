@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { UserCreateForm } from '@/components/user-create-form';
+import { UserCreateForm } from '@/modules/users/components/user-create-form';
 
 export default async function NewUserPage() {
   await requireAdmin();

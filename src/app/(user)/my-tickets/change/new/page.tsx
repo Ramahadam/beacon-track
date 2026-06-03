@@ -2,7 +2,7 @@ import { requireUser } from '@/lib/auth-helpers';
 import { getCreateTicketBackHref } from '@/lib/create-ticket-routes';
 import { SiteHeader } from '@/components/site-header';
 import { CreateTicketLayout } from '@/components/create-ticket-layout';
-import { ChangeRequestCreateForm } from '@/components/change-request-create-form';
+import { ChangeRequestCreateForm } from '@/modules/change-requests/components/change-request-create-form';
 
 export default async function NewMyChangeRequestPage() {
   const session = await requireUser();
