@@ -1,4 +1,4 @@
-# 🧭 Beacon ITSM – Intelligent Service Desk & Ticketing Platform
+# 🧭 Beacon Track – Intelligent Service Desk & Ticketing Platform
 
 Beacon is a modern **IT Service Management (ITSM) platform** designed for handling incidents, service requests, and change approvals in a structured, SLA-aware workflow.
 
